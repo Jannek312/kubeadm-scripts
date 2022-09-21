@@ -62,6 +62,9 @@ IPADDR="10.0.0.10"
 
 NODENAME=$(hostname -s)
 
+sudo rm /etc/containerd/config.toml
+sudo systemctl restart containerd
+
 sudo kubeadm init --apiserver-advertise-address=$IPADDR  --apiserver-cert-extra-sans=$IPADDR  --pod-network-cidr=192.168.0.0/16 --node-name $NODENAME --ignore-preflight-errors Swap
 
 
